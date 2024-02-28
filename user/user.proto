@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package user;
+option go_package=".;user";
+message UserInfo {
+  int64 id=1;
+  string NickName =2;
+  Sex sex =3;
+  string StarTime=4;
+  string Text =5;
+  string Uid  =6;
+    string Images =7;
+}
+
+enum Sex {
+  Default=0;
+  Nan=1;
+  Nv=2;
+}
+
+message CreateUserReq {
+    UserInfo info=1;
+}
+
+message CreateUserRes {
+  UserInfo info=1;
+}
+
+service User {
+  // todo：添加用户
+  rpc CreateUser (CreateUserReq) returns(CreateUserRes);
+}
